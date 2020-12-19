@@ -10,6 +10,7 @@ import SignIn from './components/SignIn/SignIn'
 import SignOut from './components/SignOut/SignOut'
 import ChangePassword from './components/ChangePassword/ChangePassword'
 import Home from './components/Home/Home'
+import PostIndex from './components/posts/posts'
 
 class App extends Component {
   constructor () {
@@ -67,6 +68,9 @@ class App extends Component {
             <ChangePassword msgAlert={this.msgAlert} user={user} />
           )} />
           <Route exact path='/' component={Home} />
+          <AuthenticatedRoute user={user} exact path='/posts' render={() => (
+            <PostIndex msgAlert={this.msgAlert} user={user} />
+          )} />
         </main>
       </Fragment>
     )
