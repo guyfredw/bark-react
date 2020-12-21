@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { indexPosts } from '../../api/posts'
+import { Link } from 'react-router-dom'
 
 const PostIndex = (props) => {
   const [posts, setPosts] = useState(null)
@@ -23,7 +24,7 @@ const PostIndex = (props) => {
 
   const postsIndex = posts.map(post => (
     <div key={post.id}>
-      <h3>{post.title}</h3>
+      <h3><Link to={`/posts/${post.id}`}>{post.title}</Link></h3>
       <p>{post.text}</p>
     </div>
   ))
