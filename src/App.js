@@ -71,8 +71,8 @@ class App extends Component {
           <AuthenticatedRoute user={user} exact path='/posts' render={() => (
             <PostIndex msgAlert={this.msgAlert} user={user} />
           )} />
-          <AuthenticatedRoute user={user} exact path='/posts/:postId' render={({ match }) => (
-            <Post match={match} msgAlert={this.msgAlert} user={user} />
+          <AuthenticatedRoute user={user} exact path='/posts/:postId' render={({ match, history }) => (
+            <Post match={match} history={history} msgAlert={this.msgAlert} user={user} />
           )} />
         </main>
       </Fragment>
