@@ -14,6 +14,7 @@ const Post = (props) => {
     showPost(user, match.params.postId)
       .then(res => {
         setPost(res.data)
+        console.log(res)
       })
       .then(() => {
         msgAlert({
@@ -33,14 +34,28 @@ const Post = (props) => {
 
   if (!post) {
     return <p>Loading...</p>
+  } else {
+    if (post.comments) {
+      const showComments = post.comments.map(comment => (
+        <p key={comment.id}>{comment.body}</p>
+      ))
+      return (
+        <Fragment>
+          <h2>{post.title}</h2>
+          <p>{post.text}</p>
+          <h3>Comments:</h3>
+          {showComments}
+        </Fragment>
+      )
+    } else {
+      return (
+        <Fragment>
+          <h2>{post.title}</h2>
+          <p>{post.text}</p>
+        </Fragment>
+      )
+    }
   }
-
-  return (
-    <Fragment>
-      <h2>{post.title}</h2>
-      <p>{post.text}</p>
-    </Fragment>
-  )
 }
 
 export default Post
