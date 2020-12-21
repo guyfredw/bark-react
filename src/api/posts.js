@@ -10,3 +10,13 @@ export const indexPosts = (user) => {
     }
   })
 }
+
+export const showPost = (user, postId) => {
+  return axios({
+    method: 'GET',
+    url: apiUrl + '/posts/' + postId,
+    headers: {
+      Authorization: `Token ${user.token}`
+    }
+  })
+}
