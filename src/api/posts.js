@@ -30,3 +30,14 @@ export const deletePost = (user, postId) => {
     }
   })
 }
+
+export const createPost = (user, post) => {
+  return axios({
+    method: 'POST',
+    url: apiUrl + '/posts/',
+    headers: {
+      Authorization: `Token ${user.token}`
+    },
+    data: { post }
+  })
+}
