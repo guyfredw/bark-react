@@ -20,3 +20,13 @@ export const showPost = (user, postId) => {
     }
   })
 }
+
+export const deletePost = (user, postId) => {
+  return axios({
+    method: 'DELETE',
+    url: apiUrl + '/posts/' + postId,
+    headers: {
+      Authorization: `Token ${user.token}`
+    }
+  })
+}
