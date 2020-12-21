@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { indexPosts } from '../../api/posts'
 import { Link } from 'react-router-dom'
-
+import PostCreate from './postCreate'
 const PostIndex = (props) => {
   const [posts, setPosts] = useState(null)
   const { user, msgAlert } = props
@@ -33,6 +33,11 @@ const PostIndex = (props) => {
     <div>
       <h1>Index Page</h1>
       {postsIndex}
+      <h3>Create Post</h3>
+      <PostCreate
+        user={user}
+        msgAlert={msgAlert}
+      />
     </div>
   )
 }
