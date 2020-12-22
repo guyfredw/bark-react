@@ -64,7 +64,7 @@ const Post = (props) => {
     return <p>Loading...</p>
   } else {
     // If the post has comments
-    if (post.comments) {
+    if (post.comments.length >= 1) {
       const showComments = post.comments.map(comment => (
         <p key={comment.id}>{comment.body}</p>
       ))
@@ -85,6 +85,7 @@ const Post = (props) => {
           <p>{post.text}</p>
           <Button onClick={handleDelete}>Delete</Button>
           <Button onClick={handleUpdate}>Update</Button>
+          <p> This post has no comments </p>
         </Fragment>
       )
     }
