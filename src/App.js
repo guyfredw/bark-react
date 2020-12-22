@@ -12,6 +12,8 @@ import ChangePassword from './components/ChangePassword/ChangePassword'
 import Home from './components/Home/Home'
 import PostIndex from './components/posts/posts'
 import Post from './components/posts/postShow'
+import PostUpdate from './components/posts/postEdit'
+
 class App extends Component {
   constructor () {
     super()
@@ -73,6 +75,9 @@ class App extends Component {
           )} />
           <AuthenticatedRoute user={user} exact path='/posts/:postId' render={({ match, history }) => (
             <Post match={match} history={history} msgAlert={this.msgAlert} user={user} />
+          )} />
+          <AuthenticatedRoute user={user} exact path='/post-update/:postId' render={({ match, history }) => (
+            <PostUpdate match={match} history={history} user={user} msgAlert={this.msgAlert} />
           )} />
         </main>
       </Fragment>

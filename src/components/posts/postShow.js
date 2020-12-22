@@ -1,10 +1,11 @@
 import React, { useState, useEffect, Fragment } from 'react'
 import { showPost, deletePost } from '../../api/posts'
 import Button from 'react-bootstrap/Button'
-import { withRouter } from 'react-router-dom'
+import { withRouter, Redirect } from 'react-router-dom'
 
 const Post = (props) => {
   const [post, setPost] = useState(null)
+  const [update, setUpdate] = useState(false)
 
   const { user, msgAlert, match, history } = props
 
@@ -51,6 +52,13 @@ const Post = (props) => {
       })
   }
 
+  const handleUpdate = () => {
+    setUpdate(true)
+  }
+
+  if (update) {
+    return <Redirect to={'/post-update/' + post.id} />
+  }
   //  If there is no post return loading
   if (!post) {
     return <p>Loading...</p>
@@ -65,6 +73,7 @@ const Post = (props) => {
           <h2>{post.title}</h2>
           <p>{post.text}</p>
           <Button onClick={handleDelete}>Delete</Button>
+          <Button onClick={handleUpdate}>Update</Button>
           <h3>Comments:</h3>
           {showComments}
         </Fragment>
@@ -74,6 +83,8 @@ const Post = (props) => {
         <Fragment>
           <h2>{post.title}</h2>
           <p>{post.text}</p>
+          <Button onClick={handleDelete}>Delete</Button>
+          <Button onClick={handleUpdate}>Update</Button>
         </Fragment>
       )
     }
