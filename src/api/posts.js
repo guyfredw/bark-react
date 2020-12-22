@@ -41,3 +41,14 @@ export const createPost = (user, post) => {
     data: { post }
   })
 }
+
+export const updatePost = (user, post, id) => {
+  return axios({
+    method: 'PATCH',
+    url: apiUrl + '/posts/' + id,
+    headers: {
+      Authorization: `Token ${user.token}`
+    },
+    data: { post }
+  })
+}
