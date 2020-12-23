@@ -37,6 +37,19 @@ creating and learning about social media applications in order to recreate one.
 - Follower system
 - Notification system
 
+### User stories
+
+User stories
+As an unregistered user, I would like to sign up with email and password.
+As a registered user, I would like to sign in with email and password.
+As a signed in user, I would like to change password.
+As a signed in user, I would like to sign out.
+As a signed in user, I would like to add my post to my feed.
+As a signed in user, I would like to update my post on my feed .
+As a signed in user, I would like to delete my post on my wall.
+As a signed in user, I would like to see all my posts.
+As a signed in user, I would like see all the posts including mine and the others.
+
 ### Wireframes
 
 ![BarkWireframe](https://media.git.generalassemb.ly/user/31388/files/54099e80-4114-11eb-909f-aa143f96179b)
