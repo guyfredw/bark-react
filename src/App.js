@@ -13,6 +13,9 @@ import Home from './components/Home/Home'
 import PostIndex from './components/posts/posts'
 import Post from './components/posts/postShow'
 import PostUpdate from './components/posts/postEdit'
+// Unauthenticated Posts
+import PostIndexUA from './components/posts/postsUA'
+import PostShowUA from './components/posts/postShowUA'
 
 class App extends Component {
   constructor () {
@@ -78,6 +81,12 @@ class App extends Component {
           )} />
           <AuthenticatedRoute user={user} exact path='/post-update/:postId' render={({ match, history }) => (
             <PostUpdate match={match} history={history} user={user} msgAlert={this.msgAlert} />
+          )} />
+          <Route exact path='/all-posts' render={({ match, history }) => (
+            <PostIndexUA msgAlert={this.msgAlert} />
+          )} />
+          <Route exact path='/show-post/:postId' render={({ match }) => (
+            <PostShowUA msgAlert={this.msgAlert} />
           )} />
         </main>
       </Fragment>
