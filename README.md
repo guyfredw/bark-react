@@ -36,3 +36,14 @@ creating and learning about social media applications in order to recreate one.
 - Tags
 - Follower system
 - Notification system
+
+### Wireframes
+
+![BarkWireframe](https://media.git.generalassemb.ly/user/31388/files/54099e80-4114-11eb-909f-aa143f96179b)
+
+### Set up instructions
+
+1. Fork and clone this repository
+2. Install dependencies with `npm install`.
+3. Git add and git commit your changes.
+4. Run the development server with `npm start`.
