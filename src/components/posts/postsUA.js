@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from 'react'
 import { indexPostsUA } from '../../api/posts'
 import { Link } from 'react-router-dom'
+import PostCreate from './postCreate'
 
 const PostIndexUA = (props) => {
   const [posts, setPosts] = useState(null)
-  const { msgAlert } = props
+  const { msgAlert, user } = props
+
+  console.log('user is', user)
   // when the page loads
   useEffect(() => {
     indexPostsUA()
@@ -28,13 +31,26 @@ const PostIndexUA = (props) => {
       <p>{post.text}</p>
     </div>
   ))
-
-  return (
-    <div>
-      <h1>Index Page</h1>
-      {postsIndex}
-    </div>
-  )
+  // If the user is signed in the user can create a new
+  if (user) {
+    return (
+      <div>
+        <h1>Index Page</h1>
+        {postsIndex}
+        <PostCreate
+          user={user}
+          msgAlert={msgAlert}
+        />
+      </div>
+    )
+  } else {
+    return (
+      <div>
+        <h1>Index Page</h1>
+        {postsIndex}
+      </div>
+    )
+  }
 }
 
 export default PostIndexUA

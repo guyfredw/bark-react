@@ -82,11 +82,11 @@ class App extends Component {
           <AuthenticatedRoute user={user} exact path='/post-update/:postId' render={({ match, history }) => (
             <PostUpdate match={match} history={history} user={user} msgAlert={this.msgAlert} />
           )} />
-          <Route exact path='/all-posts' render={({ match, history }) => (
-            <PostIndexUA msgAlert={this.msgAlert} />
+          <Route exact path='/all-posts' user={user} render={({ match, history }) => (
+            <PostIndexUA msgAlert={this.msgAlert} user={user} />
           )} />
-          <Route exact path='/show-post/:postId' render={({ match }) => (
-            <PostShowUA msgAlert={this.msgAlert} />
+          <Route exact path='/show-post/:postId' user={user} render={({ match }) => (
+            <PostShowUA user={user} match={match} msgAlert={this.msgAlert} />
           )} />
         </main>
       </Fragment>
