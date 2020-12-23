@@ -37,6 +37,7 @@ const PostIndexUA = (props) => {
       <div>
         <h1>Index Page</h1>
         {postsIndex}
+        <h3> Create a Post: </h3>
         <PostCreate
           user={user}
           msgAlert={msgAlert}
