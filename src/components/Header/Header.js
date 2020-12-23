@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react'
 import Nav from 'react-bootstrap/Nav'
 import Navbar from 'react-bootstrap/Navbar'
+import logo from '../../assets/bark-logo.png'
 
 const authenticatedOptions = (
   <Fragment>
@@ -19,14 +20,16 @@ const unauthenticatedOptions = (
 
 const alwaysOptions = (
   <Fragment>
-    <Nav.Link href="#/">Home</Nav.Link>
     <Nav.Link href="#all-posts">Posts</Nav.Link>
   </Fragment>
 )
 
 const Header = ({ user }) => (
   <Navbar bg="primary" variant="dark" expand="md">
-    <Navbar.Brand href="#">
+    <Navbar.Brand href="#/">
+      <img src={logo} width='50' height='50'/>
+    </Navbar.Brand>
+    <Navbar.Brand>
       Bark
     </Navbar.Brand>
     <Navbar.Toggle aria-controls="basic-navbar-nav" />

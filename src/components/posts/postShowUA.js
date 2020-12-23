@@ -2,9 +2,11 @@ import React, { useState, useEffect, Fragment } from 'react'
 import { showPostUA } from '../../api/posts'
 import { withRouter } from 'react-router-dom'
 import CommentCreate from '../comments/commentCreate'
+import Button from 'react-bootstrap/Button'
 
 const Post = (props) => {
   const [post, setPost] = useState(null)
+  const [showCreateCom, setShowCC] = useState(false)
 
   const { msgAlert, match, user } = props
 
@@ -28,6 +30,12 @@ const Post = (props) => {
         })
       })
   }, [])
+
+  // This function handles the hide and show of the forms
+  const handleShow = () => {
+    showCreateCom ? setShowCC(false) : setShowCC(true)
+  }
+
   //  If there is no post return loading
   if (!post) {
     return <p>Loading...</p>
@@ -68,11 +76,17 @@ const Post = (props) => {
             <p>{post.text}</p>
             <h3>Comments:</h3>
             {showComments}
-            <CommentCreate
-              user={user}
-              msgAlert={msgAlert}
-              match={match}
-            />
+            <Button onClick={handleShow}>Write a comment!</Button>
+            { showCreateCom ? (
+              <div>
+                <h4>Write your comment here: </h4>
+                <CommentCreate
+                  user={user}
+                  msgAlert={msgAlert}
+                  match={match}
+                />
+              </div>
+            ) : null}
           </Fragment>
         )
       } else {
@@ -82,11 +96,17 @@ const Post = (props) => {
             <p>{post.text}</p>
             <p> This post has no comments </p>
             <h4>Be the first to comment</h4>
-            <CommentCreate
-              user={user}
-              msgAlert={msgAlert}
-              match={match}
-            />
+            <Button onClick={handleShow}>Write a comment!</Button>
+            { showCreateCom ? (
+              <div>
+                <h4>Write your comment here: </h4>
+                <CommentCreate
+                  user={user}
+                  msgAlert={msgAlert}
+                  match={match}
+                />
+              </div>
+            ) : null}
           </Fragment>
         )
       }

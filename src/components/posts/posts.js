@@ -2,8 +2,12 @@ import React, { useState, useEffect } from 'react'
 import { indexPosts } from '../../api/posts'
 import { Link } from 'react-router-dom'
 import PostCreate from './postCreate'
+import Button from 'react-bootstrap/Button'
+
 const PostIndex = (props) => {
   const [posts, setPosts] = useState(null)
+  const [showCreatePost, setShowCPost] = useState(false)
+
   const { user, msgAlert } = props
   // When the first page loads
   useEffect(() => {
@@ -18,6 +22,11 @@ const PostIndex = (props) => {
       }))
   }, [])
 
+  // This function handles the hide and show of the forms
+  const handleShow = () => {
+    showCreatePost ? setShowCPost(false) : setShowCPost(true)
+  }
+
   if (!posts) {
     return <p>Loading..</p>
   }
@@ -31,13 +40,18 @@ const PostIndex = (props) => {
 
   return (
     <div>
-      <h1>Index Page</h1>
+      <h1>My Posts</h1>
       {postsIndex}
-      <h3>Create Post</h3>
-      <PostCreate
-        user={user}
-        msgAlert={msgAlert}
-      />
+      <Button onClick={handleShow}>Write a Post!</Button>
+      { showCreatePost ? (
+        <div>
+          <h4>Write your comment here: </h4>
+          <PostCreate
+            user={user}
+            msgAlert={msgAlert}
+          />
+        </div>
+      ) : null}
     </div>
   )
 }
