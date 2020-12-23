@@ -2,6 +2,7 @@ import React, { useState, useEffect, Fragment } from 'react'
 import { showPost, deletePost } from '../../api/posts'
 import Button from 'react-bootstrap/Button'
 import { withRouter, Redirect } from 'react-router-dom'
+import CommentCreate from '../comments/commentCreate'
 
 const Post = (props) => {
   const [post, setPost] = useState(null)
@@ -76,6 +77,12 @@ const Post = (props) => {
           <Button onClick={handleUpdate}>Update</Button>
           <h3>Comments:</h3>
           {showComments}
+          <h4>Write your comment here: </h4>
+          <CommentCreate
+            user={user}
+            msgAlert={msgAlert}
+            match={match}
+          />
         </Fragment>
       )
     } else {
@@ -86,6 +93,12 @@ const Post = (props) => {
           <Button onClick={handleDelete}>Delete</Button>
           <Button onClick={handleUpdate}>Update</Button>
           <p> This post has no comments </p>
+          <h4>Be the first to comment:</h4>
+          <CommentCreate
+            user={user}
+            msgAlert={msgAlert}
+            match={match}
+          />
         </Fragment>
       )
     }
