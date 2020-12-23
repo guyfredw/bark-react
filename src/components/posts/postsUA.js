@@ -6,8 +6,6 @@ import PostCreate from './postCreate'
 const PostIndexUA = (props) => {
   const [posts, setPosts] = useState(null)
   const { msgAlert, user } = props
-
-  console.log('user is', user)
   // when the page loads
   useEffect(() => {
     indexPostsUA()
