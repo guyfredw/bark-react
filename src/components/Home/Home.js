@@ -17,6 +17,7 @@ const Home = () => (
     <p> To access all the features create a user by signing up </p>
     <p> When signed-up/in you will be able to create posts and comment on posts </p>
     <p> <strong>Passwords</strong> require a minimum of 5 characters </p>
+    <p> If you want to <strong>delete</strong> or <strong>update</strong> one of your posts go to <strong>My Posts</strong> under the <strong>User</strong> dropdown and click on one of the posts then you can update or delete it.</p>
   </Fragment>
 )
 

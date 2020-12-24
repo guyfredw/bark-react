@@ -1,6 +1,7 @@
 import React, { useState, useEffect, Fragment } from 'react'
 import { showPost, deletePost } from '../../api/posts'
 import Button from 'react-bootstrap/Button'
+import Jumbotron from 'react-bootstrap/Jumbotron'
 import { withRouter, Redirect } from 'react-router-dom'
 import CommentCreate from '../comments/commentCreate'
 
@@ -84,10 +85,12 @@ const Post = (props) => {
       })
       return (
         <Fragment>
-          <h2>{post.title}</h2>
-          <p>{post.text}</p>
-          <Button onClick={handleDelete}>Delete</Button>
-          <Button onClick={handleUpdate}>Update</Button>
+          <Jumbotron>
+            <h2>{post.title}</h2>
+            <p>{post.text}</p>
+            <Button onClick={handleDelete}>Delete</Button>
+            <Button onClick={handleUpdate}>Update</Button>
+          </Jumbotron>
           <h3>Comments:</h3>
           {showComments}
           <Button onClick={handleShow}>Write a comment!</Button>
@@ -107,8 +110,10 @@ const Post = (props) => {
     } else {
       return (
         <Fragment>
-          <h2>{post.title}</h2>
-          <p>{post.text}</p>
+          <Jumbotron>
+            <h2>{post.title}</h2>
+            <p>{post.text}</p>
+          </Jumbotron>
           <Button onClick={handleDelete}>Delete</Button>
           <Button onClick={handleUpdate}>Update</Button>
           <p> This post has no comments </p>
