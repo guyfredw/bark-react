@@ -39,7 +39,7 @@ const PostIndex = (props) => {
       <Col>
         <Card>
           <Card.Body>
-            <Card.Title><Link to={`/show-post/${post.id}`}>{post.title}</Link></Card.Title>
+            <Card.Title><Link to={`/posts/${post.id}`}>{post.title}</Link></Card.Title>
             <Card.Text>{post.text}</Card.Text>
           </Card.Body>
         </Card>
