@@ -113,9 +113,9 @@ const Post = (props) => {
           <Jumbotron>
             <h2>{post.title}</h2>
             <p>{post.text}</p>
+            <Button onClick={handleDelete}>Delete</Button>
+            <Button onClick={handleUpdate}>Update</Button>
           </Jumbotron>
-          <Button onClick={handleDelete}>Delete</Button>
-          <Button onClick={handleUpdate}>Update</Button>
           <p> This post has no comments </p>
           <h4>Be the first to comment</h4>
           <Button onClick={handleShow}>Write a comment!</Button>
