@@ -2,10 +2,12 @@ import React, { useState, useEffect, Fragment } from 'react'
 import { showPost, deletePost } from '../../api/posts'
 import Button from 'react-bootstrap/Button'
 import { withRouter, Redirect } from 'react-router-dom'
+import CommentCreate from '../comments/commentCreate'
 
 const Post = (props) => {
   const [post, setPost] = useState(null)
   const [update, setUpdate] = useState(false)
+  const [showCreateCom, setShowCC] = useState(false)
 
   const { user, msgAlert, match, history } = props
 
@@ -56,6 +58,11 @@ const Post = (props) => {
     setUpdate(true)
   }
 
+  // This function handles the hide and show of the forms
+  const handleShow = () => {
+    showCreateCom ? setShowCC(false) : setShowCC(true)
+  }
+
   if (update) {
     return <Redirect to={'/post-update/' + post.id} />
   }
@@ -65,9 +72,16 @@ const Post = (props) => {
   } else {
     // If the post has comments
     if (post.comments.length >= 1) {
-      const showComments = post.comments.map(comment => (
-        <p key={comment.id}>{comment.body}</p>
-      ))
+      const showComments = post.comments.map(comment => {
+        if (user.id === comment.owner) {
+          return (
+            <div key={comment.id}>
+              <p>{comment.body}</p>
+            </div>)
+        } else {
+          return <p key={comment.id}>{comment.body}</p>
+        }
+      })
       return (
         <Fragment>
           <h2>{post.title}</h2>
@@ -76,6 +90,18 @@ const Post = (props) => {
           <Button onClick={handleUpdate}>Update</Button>
           <h3>Comments:</h3>
           {showComments}
+          <Button onClick={handleShow}>Write a comment!</Button>
+          { showCreateCom ? (
+            <div>
+              <h4>Write your comment here: </h4>
+              <CommentCreate
+                user={user}
+                msgAlert={msgAlert}
+                match={match}
+              />
+            </div>
+          ) : null}
+
         </Fragment>
       )
     } else {
@@ -86,6 +112,18 @@ const Post = (props) => {
           <Button onClick={handleDelete}>Delete</Button>
           <Button onClick={handleUpdate}>Update</Button>
           <p> This post has no comments </p>
+          <h4>Be the first to comment</h4>
+          <Button onClick={handleShow}>Write a comment!</Button>
+          { showCreateCom ? (
+            <div>
+              <h4>Write your comment here: </h4>
+              <CommentCreate
+                user={user}
+                msgAlert={msgAlert}
+                match={match}
+              />
+            </div>
+          ) : null}
         </Fragment>
       )
     }

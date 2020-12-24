@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { indexPosts } from '../../api/posts'
+import { indexPostsUA } from '../../api/posts'
 import { Link } from 'react-router-dom'
 import PostCreate from './postCreate'
 import Button from 'react-bootstrap/Button'
@@ -7,14 +7,13 @@ import Card from 'react-bootstrap/Card'
 import Col from 'react-bootstrap/Col'
 import Row from 'react-bootstrap/Row'
 
-const PostIndex = (props) => {
+const PostIndexUA = (props) => {
   const [posts, setPosts] = useState(null)
   const [showCreatePost, setShowCPost] = useState(false)
-
-  const { user, msgAlert } = props
-  // When the first page loads
+  const { msgAlert, user } = props
+  // when the page loads
   useEffect(() => {
-    indexPosts(user)
+    indexPostsUA()
       .then(res => {
         setPosts(res.data)
       })
@@ -25,13 +24,13 @@ const PostIndex = (props) => {
       }))
   }, [])
 
+  if (!posts) {
+    return <p>Loading..</p>
+  }
+
   // This function handles the hide and show of the forms
   const handleShow = () => {
     showCreatePost ? setShowCPost(false) : setShowCPost(true)
-  }
-
-  if (!posts) {
-    return <p>Loading..</p>
   }
 
   const postsIndex = posts.map(post => (
@@ -46,25 +45,36 @@ const PostIndex = (props) => {
       </Col>
     </div>
   ))
-
-  return (
-    <div>
-      <h1>My Posts</h1>
-      <Row>
-        {postsIndex}
-      </Row>
-      <Button onClick={handleShow}>Write a Post!</Button>
-      { showCreatePost ? (
-        <div>
-          <h4>Write your comment here: </h4>
-          <PostCreate
-            user={user}
-            msgAlert={msgAlert}
-          />
-        </div>
-      ) : null}
-    </div>
-  )
+  // If the user is signed in the user can create a new
+  if (user) {
+    return (
+      <div>
+        <h1>All Posts</h1>
+        <Row>
+          {postsIndex}
+        </Row>
+        <Button onClick={handleShow}>Write a Post!</Button>
+        { showCreatePost ? (
+          <div>
+            <h4>Write your comment here: </h4>
+            <PostCreate
+              user={user}
+              msgAlert={msgAlert}
+            />
+          </div>
+        ) : null}
+      </div>
+    )
+  } else {
+    return (
+      <div>
+        <h1>All Posts</h1>
+        <Row>
+          {postsIndex}
+        </Row>
+      </div>
+    )
+  }
 }
 
-export default PostIndex
+export default PostIndexUA
