@@ -1,32 +1,42 @@
 import React, { Fragment } from 'react'
 import Nav from 'react-bootstrap/Nav'
 import Navbar from 'react-bootstrap/Navbar'
+import logo from '../../assets/bark-logo.png'
+import NavDropdown from 'react-bootstrap/NavDropdown'
 
 const authenticatedOptions = (
   <Fragment>
-    <Nav.Link href="#change-password">Change Password</Nav.Link>
-    <Nav.Link href="#sign-out">Sign Out</Nav.Link>
-    <Nav.Link href='#posts'>My Posts</Nav.Link>
+    <NavDropdown alignRight title="User" id="user-nav-dropdown">
+      <NavDropdown.Item href='#posts'>My Posts</NavDropdown.Item>
+      <NavDropdown.Divider />
+      <NavDropdown.Item href="#change-password">Change Password</NavDropdown.Item>
+      <NavDropdown.Item href="#sign-out">Sign Out</NavDropdown.Item>
+    </NavDropdown>
   </Fragment>
 )
 
 const unauthenticatedOptions = (
   <Fragment>
-    <Nav.Link href="#sign-up">Sign Up</Nav.Link>
-    <Nav.Link href="#sign-in">Sign In</Nav.Link>
+    <NavDropdown alignRight title="User" id="user-nav-dropdown">
+      <NavDropdown.Item href="#sign-up">Sign Up</NavDropdown.Item>
+      <NavDropdown.Item href="#sign-in">Sign In</NavDropdown.Item>
+    </NavDropdown>
   </Fragment>
 )
 
 const alwaysOptions = (
   <Fragment>
-    <Nav.Link href="#/">Home</Nav.Link>
+    <Nav.Link href="#all-posts">Posts</Nav.Link>
   </Fragment>
 )
 
 const Header = ({ user }) => (
-  <Navbar bg="primary" variant="dark" expand="md">
-    <Navbar.Brand href="#">
-      react-auth-template
+  <Navbar bg="secondary" variant="dark" expand="md">
+    <Navbar.Brand href="#/">
+      <img src={logo} width='50' height='50'/>
+    </Navbar.Brand>
+    <Navbar.Brand>
+      Bark
     </Navbar.Brand>
     <Navbar.Toggle aria-controls="basic-navbar-nav" />
     <Navbar.Collapse id="basic-navbar-nav">

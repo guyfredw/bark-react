@@ -52,3 +52,18 @@ export const updatePost = (user, post, id) => {
     data: { post }
   })
 }
+
+// Unauthenticated requests
+export const indexPostsUA = () => {
+  return axios({
+    method: 'GET',
+    url: apiUrl + '/all-posts/'
+  })
+}
+
+export const showPostUA = (postId) => {
+  return axios({
+    method: 'GET',
+    url: apiUrl + '/show-post/' + postId
+  })
+}
