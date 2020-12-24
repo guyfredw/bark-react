@@ -56,7 +56,7 @@ const PostIndex = (props) => {
       <Button onClick={handleShow}>Write a Post!</Button>
       { showCreatePost ? (
         <div>
-          <h4>Write your comment here: </h4>
+          <h4>Write your post here: </h4>
           <PostCreate
             user={user}
             msgAlert={msgAlert}
