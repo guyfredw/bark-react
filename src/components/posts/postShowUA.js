@@ -3,6 +3,7 @@ import { showPostUA } from '../../api/posts'
 import { withRouter } from 'react-router-dom'
 import CommentCreate from '../comments/commentCreate'
 import Button from 'react-bootstrap/Button'
+import Jumbotron from 'react-bootstrap/Jumbotron'
 
 const Post = (props) => {
   const [post, setPost] = useState(null)
@@ -49,8 +50,10 @@ const Post = (props) => {
         ))
         return (
           <Fragment>
-            <h2>{post.title}</h2>
-            <p>{post.text}</p>
+            <Jumbotron>
+              <h2>{post.title}</h2>
+              <p>{post.text}</p>
+            </Jumbotron>
             <h3>Comments:</h3>
             {showComments}
           </Fragment>
@@ -58,8 +61,10 @@ const Post = (props) => {
       } else {
         return (
           <Fragment>
-            <h2>{post.title}</h2>
-            <p>{post.text}</p>
+            <Jumbotron>
+              <h2>{post.title}</h2>
+              <p>{post.text}</p>
+            </Jumbotron>
             <p> This post has no comments </p>
           </Fragment>
         )
@@ -72,8 +77,10 @@ const Post = (props) => {
         ))
         return (
           <Fragment>
-            <h2>{post.title}</h2>
-            <p>{post.text}</p>
+            <Jumbotron>
+              <h1>{post.title}</h1>
+              <p>{post.text}</p>
+            </Jumbotron>
             <h3>Comments:</h3>
             {showComments}
             <Button onClick={handleShow}>Write a comment!</Button>
@@ -92,8 +99,10 @@ const Post = (props) => {
       } else {
         return (
           <Fragment>
-            <h2>{post.title}</h2>
-            <p>{post.text}</p>
+            <Jumbotron>
+              <h1>{post.title}</h1>
+              <p>{post.text}</p>
+            </Jumbotron>
             <p> This post has no comments </p>
             <h4>Be the first to comment</h4>
             <Button onClick={handleShow}>Write a comment!</Button>

@@ -3,6 +3,9 @@ import { indexPosts } from '../../api/posts'
 import { Link } from 'react-router-dom'
 import PostCreate from './postCreate'
 import Button from 'react-bootstrap/Button'
+import Card from 'react-bootstrap/Card'
+import Col from 'react-bootstrap/Col'
+import Row from 'react-bootstrap/Row'
 
 const PostIndex = (props) => {
   const [posts, setPosts] = useState(null)
@@ -32,16 +35,24 @@ const PostIndex = (props) => {
   }
 
   const postsIndex = posts.map(post => (
-    <div key={post.id}>
-      <h3><Link to={`/posts/${post.id}`}>{post.title}</Link></h3>
-      <p>{post.text}</p>
+    <div className='col-6' key={post.id}>
+      <Col>
+        <Card>
+          <Card.Body>
+            <Card.Title><Link to={`/show-post/${post.id}`}>{post.title}</Link></Card.Title>
+            <Card.Text>{post.text}</Card.Text>
+          </Card.Body>
+        </Card>
+      </Col>
     </div>
   ))
 
   return (
     <div>
       <h1>My Posts</h1>
-      {postsIndex}
+      <Row>
+        {postsIndex}
+      </Row>
       <Button onClick={handleShow}>Write a Post!</Button>
       { showCreatePost ? (
         <div>

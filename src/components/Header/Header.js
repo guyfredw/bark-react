@@ -2,19 +2,25 @@ import React, { Fragment } from 'react'
 import Nav from 'react-bootstrap/Nav'
 import Navbar from 'react-bootstrap/Navbar'
 import logo from '../../assets/bark-logo.png'
+import NavDropdown from 'react-bootstrap/NavDropdown'
 
 const authenticatedOptions = (
   <Fragment>
-    <Nav.Link href="#change-password">Change Password</Nav.Link>
-    <Nav.Link href="#sign-out">Sign Out</Nav.Link>
-    <Nav.Link href='#posts'>My Posts</Nav.Link>
+    <NavDropdown alignRight title="User" id="user-nav-dropdown">
+      <NavDropdown.Item href='#posts'>My Posts</NavDropdown.Item>
+      <NavDropdown.Divider />
+      <NavDropdown.Item href="#change-password">Change Password</NavDropdown.Item>
+      <NavDropdown.Item href="#sign-out">Sign Out</NavDropdown.Item>
+    </NavDropdown>
   </Fragment>
 )
 
 const unauthenticatedOptions = (
   <Fragment>
-    <Nav.Link href="#sign-up">Sign Up</Nav.Link>
-    <Nav.Link href="#sign-in">Sign In</Nav.Link>
+    <NavDropdown alignRight title="User" id="user-nav-dropdown">
+      <NavDropdown.Item href="#sign-up">Sign Up</NavDropdown.Item>
+      <NavDropdown.Item href="#sign-in">Sign In</NavDropdown.Item>
+    </NavDropdown>
   </Fragment>
 )
 
@@ -25,7 +31,7 @@ const alwaysOptions = (
 )
 
 const Header = ({ user }) => (
-  <Navbar bg="primary" variant="dark" expand="md">
+  <Navbar bg="secondary" variant="dark" expand="md">
     <Navbar.Brand href="#/">
       <img src={logo} width='50' height='50'/>
     </Navbar.Brand>

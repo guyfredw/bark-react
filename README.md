@@ -49,6 +49,10 @@ creating and learning about social media applications in order to recreate one.
 - As a signed in user, I would like to see all my posts.
 - As a signed in user, I would like see all the posts including mine and the others.
 
+### App Screenshot
+
+
+
 ### Wireframes
 
 ![BarkWireframe](https://media.git.generalassemb.ly/user/31388/files/54099e80-4114-11eb-909f-aa143f96179b)

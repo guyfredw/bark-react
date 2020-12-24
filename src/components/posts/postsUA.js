@@ -3,6 +3,9 @@ import { indexPostsUA } from '../../api/posts'
 import { Link } from 'react-router-dom'
 import PostCreate from './postCreate'
 import Button from 'react-bootstrap/Button'
+import Card from 'react-bootstrap/Card'
+import Col from 'react-bootstrap/Col'
+import Row from 'react-bootstrap/Row'
 
 const PostIndexUA = (props) => {
   const [posts, setPosts] = useState(null)
@@ -31,9 +34,15 @@ const PostIndexUA = (props) => {
   }
 
   const postsIndex = posts.map(post => (
-    <div key={post.id}>
-      <h3><Link to={`/show-post/${post.id}`}>{post.title}</Link></h3>
-      <p>{post.text}</p>
+    <div className='col-6' key={post.id}>
+      <Col>
+        <Card>
+          <Card.Body>
+            <Card.Title><Link to={`/show-post/${post.id}`}>{post.title}</Link></Card.Title>
+            <Card.Text>{post.text}</Card.Text>
+          </Card.Body>
+        </Card>
+      </Col>
     </div>
   ))
   // If the user is signed in the user can create a new
@@ -41,7 +50,9 @@ const PostIndexUA = (props) => {
     return (
       <div>
         <h1>All Posts</h1>
-        {postsIndex}
+        <Row>
+          {postsIndex}
+        </Row>
         <Button onClick={handleShow}>Write a Post!</Button>
         { showCreatePost ? (
           <div>
@@ -58,7 +69,9 @@ const PostIndexUA = (props) => {
     return (
       <div>
         <h1>All Posts</h1>
-        {postsIndex}
+        <Row>
+          {postsIndex}
+        </Row>
       </div>
     )
   }
