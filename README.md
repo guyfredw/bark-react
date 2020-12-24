@@ -51,7 +51,7 @@ creating and learning about social media applications in order to recreate one.
 
 ### App Screenshot
 
-
+![App screenshot](./src/assets/AppSS.png)
 
 ### Wireframes
 
